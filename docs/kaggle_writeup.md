@@ -1,6 +1,5 @@
-<!-- DRAFT of our Kaggle solution write-up. Not posted. Before posting, upload the figures as PNG
-     (`uv run --no-sync python scripts/make_figures.py --png`; export pipeline.svg too) and replace the relative
-     image paths. The GitHub repository has been public since 2026-10-03. -->
+<!-- Posted on Kaggle on 2026-10-03: https://www.kaggle.com/competitions/biohub-cell-tracking-during-development/writeups/3d-u-net-node-transformer-ensemble-with-coordinate
+     (figures embedded from docs/figures/*.png on GitHub). -->
 
 # 3D U-Net Node Transformer Ensemble with Coordinate Refinement and Graph Repair
 

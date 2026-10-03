@@ -1,8 +1,7 @@
 <!-- DRAFT of our Kaggle solution write-up. Not posted. Before posting:
      1. make the GitHub repository public (it is private today);
      2. upload the figures as PNG (`uv run --no-sync python scripts/make_figures.py --png`; export pipeline.svg too)
-        and replace the relative image paths;
-     3. replace the two architecture-figure placeholders. -->
+        and replace the relative image paths. -->
 
 # 130th Place (Silver): One-Change Patches on a Public Notebook
 
@@ -47,7 +46,8 @@ followed public.
 - **Aman Atar, [Biohub Geometric Fusion](https://www.kaggle.com/code/amanatar/biohub-geometric-fusion)**, the base
   of x138.
 
-> **[Figure placeholder (a)]** Detector/linker model architecture (PlotNeuralNet-style 3D layer blocks), to be added.
+![Detector/linker model (UNetNodeTransformer)](figures/arch_detector_linker.png)
+*The organizer's detector/linker model, used by all three detectors in our blend. Drawn in the style of [PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet).*
 
 The base notebook is a single 2,900-line cell. Instead of forking it, a builder applies anchored patches to the
 unmodified notebook: each anchor must match exactly once and every addition sits behind a default-off knob. We
@@ -82,7 +82,8 @@ submitted 92 kernels this way, each one change against a named base.
   159 training videos, 25x the public head's data. The final kernel moves each centre by the mean of the two heads'
   bounded shifts.
 
-> **[Figure placeholder (b)]** Coordinate-head architecture (PlotNeuralNet-style 3D layer blocks), to be added.
+![Coordinate head](figures/arch_coordinate_head.png)
+*The coordinate head. The final submission averages the bounded shifts of the public V1284 head and our own head.*
 
 ![Change per step](figures/lb_steps.svg)
 

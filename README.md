@@ -34,17 +34,11 @@ anchored, default-off patches to the unmodified notebook, so every submission is
 
 ![Pipeline of the final submission](docs/figures/pipeline.svg)
 
-<!-- ARCHITECTURE FIGURE PLACEHOLDERS: PlotNeuralNet-style 3D layer-block diagrams, produced separately.
-     (a) detector/linker model: the organizer's UNetNodeTransformer (scripts/train_unet_transformer.py), shared by
-         all three detectors: TemporalUNet3D on frames t and t+1 -> 1x1x1 detection head; UNet features at node
-         coordinates + positional embeddings -> cross-attention node transformer -> edge logits;
-         suggested file docs/figures/arch_detector_linker.svg
-     (b) coordinate head: UNet features at the centre + 6 neighbours (7 x 32 = 224) -> Linear 224->32 -> SiLU ->
-         Linear 32->3 -> bounded shift < 2 um;
-         suggested file docs/figures/arch_coordinate_head.svg -->
-> **[Figure placeholder (a)]** Detector/linker model architecture (PlotNeuralNet-style 3D layer blocks), to be added.
->
-> **[Figure placeholder (b)]** Coordinate-head architecture (PlotNeuralNet-style 3D layer blocks), to be added.
+![Detector/linker model (UNetNodeTransformer)](docs/figures/arch_detector_linker.png)
+*The organizer's detector/linker model, used by all three detectors in our blend. Drawn in the style of [PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet).*
+
+![Coordinate head](docs/figures/arch_coordinate_head.png)
+*The coordinate head. The final submission averages the bounded shifts of the public V1284 head and our own head.*
 
 ## What we added on top of the public lineage
 
@@ -129,6 +123,7 @@ this repository.
    step 1 (`BASE946_DIR`), runtime-anchor tests a checkout of the organizer's baseline (`ORGANIZER_REPO`).
    Without them those tests skip with a reason.
 7. **Figures.** `uv run --no-sync python scripts/make_figures.py` and `python scripts/make_pipeline_svg.py`.
+   Architecture figures: `PLOTNN_DIR=<PlotNeuralNet clone> python scripts/plotnn/make_arch_figures.py` (needs a LaTeX engine, e.g. tectonic).
 
 ## Repository map
 

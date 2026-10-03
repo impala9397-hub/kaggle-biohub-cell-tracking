@@ -70,12 +70,8 @@ pipeline:
    into a fork when a free track start sits next to the existing daughter (vetoed by a DeepCenter centre-prior model),
    a short-track filter and line-fit smoothing.
 
-<!-- ARCHITECTURE FIGURE PLACEHOLDER (a): PlotNeuralNet-style 3D layer-block diagram, produced separately.
-     The organizer's detector/linker model (UNetNodeTransformer, scripts/train_unet_transformer.py), shared by all
-     three detectors: TemporalUNet3D on frames t and t+1 -> 1x1x1 detection head (logits) and feature map; features
-     at node coordinates + sinusoidal positional embeddings -> cross-attention node transformer -> edge logits.
-     Suggested file: figures/arch_detector_linker.svg -->
-> **[Figure placeholder (a)]** Detector/linker model architecture (PlotNeuralNet-style 3D layer blocks), to be added.
+![Detector/linker model (UNetNodeTransformer)](figures/arch_detector_linker.png)
+*The organizer's detector/linker model, used by all three detectors in our blend. Drawn in the style of [PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet).*
 
 Our reproduction of it on the original public weights (S56) scored **0.94489 public / 0.91406 private**.
 
@@ -194,12 +190,8 @@ primary UNet feature map at the centre and at six neighbouring offsets (7 x 32 =
 coordinates flow through association (trilinear feature lookup), the ILP and all post-processing; only the CSV is
 rounded. Code: [`kaggle/v1284_946.py`](../kaggle/v1284_946.py) (`V1284=1`).
 
-<!-- ARCHITECTURE FIGURE PLACEHOLDER (b): PlotNeuralNet-style 3D layer-block diagram, produced separately.
-     Coordinate head: 32-channel primary UNet feature map sampled at the centre and at the 6 neighbouring voxels;
-     input = [f(centre), f(neighbour) - f(centre) x 6] = 7 x 32 = 224, standardised -> Linear 224->32 -> SiLU ->
-     Linear 32->3 -> bounded shift 2 d / (1 + |d|) um (< 2 um). The public and our own heads share this architecture.
-     Suggested file: figures/arch_coordinate_head.svg -->
-> **[Figure placeholder (b)]** Coordinate-head architecture (PlotNeuralNet-style 3D layer blocks), to be added.
+![Coordinate head](figures/arch_coordinate_head.png)
+*The coordinate head. The final submission averages the bounded shifts of the public V1284 head and our own head.*
 
 - x138flow -> flow-v1284: **+0.0047 public, -0.0017 private.** (A count-neutral "late" variant that only changes
   the CSV coordinates read +0.0025 public, +0.0009 private.)

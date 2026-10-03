@@ -20,3 +20,5 @@ uv.lock.bak
 .DS_Store
 # PNG previews of the figures (SVG is the published format)
 docs/figures/*.png
+# Architecture figures are published as PNG (PlotNeuralNet output; vector PDF alongside)
+!docs/figures/arch_*.png

@@ -71,6 +71,7 @@ coordhead/
 scripts/
   make_figures.py      charts in docs/figures from docs/data/submissions.csv and recorded numbers
   make_pipeline_svg.py pipeline diagram
+  plotnn/make_arch_figures.py  PlotNeuralNet-style architecture figures (needs a PlotNeuralNet clone + LaTeX)
 tests/                 CPU tests; synthetic ones always run, builder tests skip without the base notebook
 ```
 
@@ -110,6 +111,6 @@ tests/                 CPU tests; synthetic ones always run, builder tests skip 
 - [x] T12 `fetch_base946.sh` fixed (download version 4 by script version id) and run for real; final kernels rebuilt
   and compared with the submitted ones
 - [x] T13 Kaggle write-up draft (`docs/kaggle_writeup.md`, not posted)
-- [ ] T14 architecture figures (PlotNeuralNet style) for the detector/linker model and the coordinate head;
+- [x] T14 architecture figures (PlotNeuralNet style) for the detector/linker model and the coordinate head;
   placeholders are in README.md, docs/method.md and docs/kaggle_writeup.md
 - [x] T15 scans, tests, push

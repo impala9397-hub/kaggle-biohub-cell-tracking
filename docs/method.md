@@ -55,8 +55,9 @@ adjusted_edge_jaccard = edge_jaccard * (1 - 0.1 * (N_pred - N_total) / N_total)
 ## 2. The public base we started from
 
 In September we rebased on the public notebook
-[Biohub Cell Tracking: 0.946 LB](https://www.kaggle.com/code/reyhanksatria/biohub-cell-tracking-0-946-lb)
-(Reyhan Ksatria, Apache-2.0), itself the end of a public lineage built on pilkwang's public weights. Its pipeline:
+[Biohub Cell Tracking: 0.946 LB](https://www.kaggle.com/code/reyhanksatria/biohub-cell-tracking-0-947-lb?scriptVersionId=348041532)
+(Reyhan Ksatria, Apache-2.0; version 4), itself the end of a public lineage built on pilkwang's public weights. Its
+pipeline:
 
 1. **Detection.** Two TemporalUNet3D models (the organizer architecture): a 50-epoch "support pack" primary and a
    400-epoch secondary ("seed 314159"), averaged over 8 dihedral test-time views and blended at weight 0.80 for the
@@ -68,6 +69,13 @@ In September we rebased on the public notebook
    10 µm), then gap closing, recovery of two-frame gaps, a "safe-division" repair that turns a parent with one child
    into a fork when a free track start sits next to the existing daughter (vetoed by a DeepCenter centre-prior model),
    a short-track filter and line-fit smoothing.
+
+<!-- ARCHITECTURE FIGURE PLACEHOLDER (a): PlotNeuralNet-style 3D layer-block diagram, produced separately.
+     The organizer's detector/linker model (UNetNodeTransformer, scripts/train_unet_transformer.py), shared by all
+     three detectors: TemporalUNet3D on frames t and t+1 -> 1x1x1 detection head (logits) and feature map; features
+     at node coordinates + sinusoidal positional embeddings -> cross-attention node transformer -> edge logits.
+     Suggested file: figures/arch_detector_linker.svg -->
+> **[Figure placeholder (a)]** Detector/linker model architecture (PlotNeuralNet-style 3D layer blocks), to be added.
 
 Our reproduction of it on the original public weights (S56) scored **0.94489 public / 0.91406 private**.
 
@@ -186,6 +194,13 @@ primary UNet feature map at the centre and at six neighbouring offsets (7 x 32 =
 coordinates flow through association (trilinear feature lookup), the ILP and all post-processing; only the CSV is
 rounded. Code: [`kaggle/v1284_946.py`](../kaggle/v1284_946.py) (`V1284=1`).
 
+<!-- ARCHITECTURE FIGURE PLACEHOLDER (b): PlotNeuralNet-style 3D layer-block diagram, produced separately.
+     Coordinate head: 32-channel primary UNet feature map sampled at the centre and at the 6 neighbouring voxels;
+     input = [f(centre), f(neighbour) - f(centre) x 6] = 7 x 32 = 224, standardised -> Linear 224->32 -> SiLU ->
+     Linear 32->3 -> bounded shift 2 d / (1 + |d|) um (< 2 um). The public and our own heads share this architecture.
+     Suggested file: figures/arch_coordinate_head.svg -->
+> **[Figure placeholder (b)]** Coordinate-head architecture (PlotNeuralNet-style 3D layer blocks), to be added.
+
 - x138flow -> flow-v1284: **+0.0047 public, -0.0017 private.** (A count-neutral "late" variant that only changes
   the CSV coordinates read +0.0025 public, +0.0009 private.)
 
@@ -221,7 +236,7 @@ We trusted the public LB and did not select the own-head kernels. As a hedge we 
 displacements (`V1284_HEAD2_DATASET`, "headavg"): **+0.0021 public, +0.0026 private** over the public head. The
 second final submission averages the public head with the mean of five own-head seeds
 (`V1284_HEAD2_SHA256S`, "headens5"). The best own-head kernel scored **0.93087 private**, which would have placed
-about 75th instead of 130th.
+75th instead of 130th.
 
 ## 9. Safe-division gate at 8 µm
 

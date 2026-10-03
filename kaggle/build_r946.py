@@ -74,9 +74,11 @@ BASE = Path(os.environ.get("BASE946_DIR") or (HERE / "base946"))
 META_TEMPLATE = HERE / "kernel-metadata.template.json"
 OWNER = os.environ.get("KAGGLE_OWNER", "impala9397")
 
-# The base notebook version we built on (pulled 2026-09-08, then "Biohub Cell Tracking: 0.946 LB"; the author later
-# renamed the notebook to "...-0-947-lb" and published a newer version). SHA-256 of the single code cell's source text.
-BASE946_KERNEL = "reyhanksatria/biohub-cell-tracking-0-946-lb"
+# The base notebook version we built on: version 4 (2026-09-07) of "Biohub Cell Tracking: 0.946 LB", pulled on
+# 2026-09-08 when it was the latest version. The author later renamed the notebook to "...-0-947-lb" and published
+# version 5, a different notebook; fetch_base946.sh downloads version 4 by its script version id (348041532).
+# SHA-256 of the single code cell's source text.
+BASE946_KERNEL = "reyhanksatria/biohub-cell-tracking-0-947-lb"  # version 4, scriptVersionId 348041532
 BASE946_CODE_SHA256 = "5e940fc76d42f12dfa3e962a16509441a2c1ffea5be2b97b9d7a9e774ed72d10"
 
 SLUG_MAP = {  # private re-uploads used by the base notebook -> the public pilkwang originals (the notebook checks checksums)
@@ -231,7 +233,7 @@ def main() -> None:
     base_nb = BASE / "notebook.ipynb"
     if not base_nb.is_file():
         raise SystemExit(f"base notebook not found: {base_nb}\n"
-                         f"Run kaggle/fetch_base946.sh (needs the Kaggle CLI) or set BASE946_DIR.")
+                         f"Run kaggle/fetch_base946.sh (downloads it from Kaggle) or set BASE946_DIR.")
     nb = json.loads(base_nb.read_text())
     code_cells = [i for i, c in enumerate(nb["cells"]) if c["cell_type"] == "code"]
     if len(code_cells) != 1:

@@ -1,4 +1,4 @@
-# Biohub – Cell Tracking During Development: our solution (130th of 3,947)
+# Biohub – Cell Tracking During Development: our solution (silver medal, 130th of 3,947)
 
 Code and write-up of our entry to the Kaggle competition
 [Biohub – Cell Tracking During Development](https://www.kaggle.com/competitions/biohub-cell-tracking-during-development)
@@ -18,11 +18,13 @@ hidden test set within 12 hours on a GPU, offline.
 |---|---|---|
 | Final submission (`headavg-pmax8`) | 0.96571 | **0.92649** |
 | Rank | | **130 / 3,947 teams (top 3.3 %)** |
-| Our best private score (own coordinate head, not selected) | 0.96071 | 0.93087 (about 75th) |
+| Our best private score: own coordinate head (not selected) | 0.96071 | 0.93087 (would have placed 75th) |
 
-Medal: pending Kaggle finalization
+**Silver medal**, 130th of 3,947 teams (final standings, private LB 0.92649).
 
-Best public score: 0.96571 (the leaderboard truncated it to 0.965; public rank 53 at the deadline).
+Best public score: 0.96571 (the leaderboard truncated it to 0.965; public rank 53 at the deadline). The 75th place
+of our best own-head kernel (which also ran two flow rounds and the swap repair) is counted on the final private
+leaderboard: 74 teams scored above 0.93087.
 
 ## Pipeline
 
@@ -31,6 +33,18 @@ anchored, default-off patches to the unmodified notebook, so every submission is
 ([how](kaggle/README.md)).
 
 ![Pipeline of the final submission](docs/figures/pipeline.svg)
+
+<!-- ARCHITECTURE FIGURE PLACEHOLDERS: PlotNeuralNet-style 3D layer-block diagrams, produced separately.
+     (a) detector/linker model: the organizer's UNetNodeTransformer (scripts/train_unet_transformer.py), shared by
+         all three detectors: TemporalUNet3D on frames t and t+1 -> 1x1x1 detection head; UNet features at node
+         coordinates + positional embeddings -> cross-attention node transformer -> edge logits;
+         suggested file docs/figures/arch_detector_linker.svg
+     (b) coordinate head: UNet features at the centre + 6 neighbours (7 x 32 = 224) -> Linear 224->32 -> SiLU ->
+         Linear 32->3 -> bounded shift < 2 um;
+         suggested file docs/figures/arch_coordinate_head.svg -->
+> **[Figure placeholder (a)]** Detector/linker model architecture (PlotNeuralNet-style 3D layer blocks), to be added.
+>
+> **[Figure placeholder (b)]** Coordinate-head architecture (PlotNeuralNet-style 3D layer blocks), to be added.
 
 ## What we added on top of the public lineage
 
@@ -49,8 +63,9 @@ Each row is one submitted kernel that changed one thing relative to the row abov
 | **Safe-division gate 9 -> 8 µm**, checked on a pre-registered 33-video holdout | +0.0019 | +0.0002 |
 | *Final:* `headavg-pmax8`, score | **0.96571** | **0.92649** |
 
-Not in the final recipe: a second flow-refinement round (+0.0002 public, 0.0000 private) and our own head alone
-(-0.0015 public, **+0.0070 private** against the public head).
+Not in the final recipe: a second flow-refinement round (FLOW_ITER 2: +0.0002 public, 0.0000 private; the final
+kernels run one round, FLOW_ITER 1) and our own head alone (-0.0015 public, **+0.0070 private** against the public
+head).
 
 ![Public LB rejected our own head; private LB preferred it](docs/figures/lb_public_vs_private.svg)
 
@@ -74,8 +89,8 @@ summarised in [docs/method.md](docs/method.md).
 
 1. **A 29 % public leaderboard cannot judge 0.001-level decisions.** Offline, our own coordinate head beat the public
    one in both embryos (centre error 1.25 vs 1.53 µm). The public LB said -0.0015, so we kept the public head; the
-   private LB said **+0.0070**, worth about 55 places. Across 88 single-change submissions the public and private
-   changes had a rank correlation of 0.25.
+   private LB said **+0.0070**: our own-head kernels would have placed 75th-76th instead of 130th. Across 88
+   single-change submissions the public and private changes had a rank correlation of 0.25.
 2. **Node count is a lever whose sign you cannot see offline.** The metric rewards predicting fewer nodes, so
    node-removal rules look good on a local split; all of them lost on the leaderboard.
 3. **Never change the submission format on a local scorer's word**: float coordinates, +0.0029 offline, -0.0113 on
@@ -95,8 +110,10 @@ Every component explained: [docs/method.md](docs/method.md).
 The kernel needs the competition data and Kaggle datasets that are attached at run time; nothing large lives in
 this repository.
 
-1. **Base notebook.** `kaggle/fetch_base946.sh` pulls the public 0.946 notebook with the Kaggle CLI and checks the
-   SHA-256 of its code cell (the builder refuses any other version).
+1. **Base notebook.** `kaggle/fetch_base946.sh` downloads version 4 of the public 0.946 notebook from Kaggle (no
+   credentials needed) and checks the SHA-256 of its code cell (the builder refuses any other version). Checked on
+   2026-10-03: the final kernels rebuilt this way match the submitted ones except for comments, docstrings, file
+   paths and ids ([details](kaggle/README.md#verified-rebuilding-the-final-kernels-2026-10-03)).
 2. **Build.** `python kaggle/build_recipe.py final-headavg-pmax8 out/final` writes `notebook.ipynb` and
    `kernel-metadata.json`. `python kaggle/build_recipe.py --list` shows every milestone recipe.
 3. **Weights.** Public (CC0): pilkwang's support pack, DeepCenter and seed-314159 detectors, and the V1284 head.
@@ -118,9 +135,10 @@ this repository.
 ```text
 kaggle/        notebook builder, recipes and patch modules (see kaggle/README.md)
 coordhead/     training of our own coordinate-regression head
-docs/          method, results, lessons; figures; data/submissions.csv (all 158 submissions, public and private)
+docs/          method, results, lessons, a Kaggle write-up draft; figures; data/submissions.csv (all 158 submissions)
 scripts/       figure generators
 tests/         CPU tests (synthetic; builder tests skip without the public base notebook)
+licenses/      full text of the Apache License 2.0 (for the code ported from public notebooks)
 spec.md        design document of this repository
 ```
 
@@ -130,17 +148,19 @@ spec.md        design document of this repository
   ([royerlab/kaggle-cell-tracking-competition](https://github.com/royerlab/kaggle-cell-tracking-competition),
   BSD-3-Clause), whose architecture, training recipe and metric everything here builds on.
 - The public notebooks we built on: Reyhan Ksatria's
-  [0.946 notebook](https://www.kaggle.com/code/reyhanksatria/biohub-cell-tracking-0-946-lb) (our base),
+  [0.946 notebook](https://www.kaggle.com/code/reyhanksatria/biohub-cell-tracking-0-947-lb?scriptVersionId=348041532)
+  (version 4, our base),
   Anvith Pothula's [x138](https://www.kaggle.com/code/anvithpothula/biohub-0-953-lb-original) (flow relink, readmit,
   gap fill and the V1284 module, ported into our patches) and Aman Atar's
   [geometric fusion](https://www.kaggle.com/code/amanatar/biohub-geometric-fusion) (x138's base). All Apache-2.0.
 - Public weights: pilkwang's support pack, DeepCenter and seed-314159 datasets, and Anvith Pothula's V1284 head
   (all CC0).
-- Built solo, with AI coding agents (Claude Code, Codex) doing much of the implementation and offline analysis under
-  my direction; every submission was reviewed and approved by me.
+- I worked solo, with the help of AI coding agents (Claude Code and Codex) that wrote much of the code and analysis
+  under my direction.
 
 Our code is released under the [MIT License](LICENSE). Code ported from the public notebooks keeps its Apache-2.0
-license; see [NOTICE](NOTICE) for what came from where and the license line we checked on each source page.
+license (full text in [licenses/Apache-2.0.txt](licenses/Apache-2.0.txt)); see [NOTICE](NOTICE) for what came from
+where and the license line we checked on each source page.
 The competition data is not redistributed here.
 
 Competition citation: Thibaut Goldsborough, Jordão Bragantini, Xiang Zhao, Gordon Leary, Teun Huijben,

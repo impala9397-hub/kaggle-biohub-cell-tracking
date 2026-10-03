@@ -67,8 +67,8 @@ run_stats (only when on): motion_relink_flow_frames, motion_relink_flow_predicte
          gapfill_pool_excluded, gapfill_candidates, gapfill_pairs_g1..3, gapfill_peak_nodes, gapfill_added_nodes,
          gapfill_added_edges, gapfill_budget_hit, x138_relink_s, x138_readmit_s, x138_gapfill_s
 Provenance: the public notebook code (Apache-2.0; untrusted data) was only read, never executed on our machine. The
-function bodies are verbatim from the x138 version pulled on 2026-09-22. Ported parts keep the Apache-2.0 license;
-see NOTICE. The rest of this file is ours (MIT).
+function bodies are verbatim from the x138 version pulled on 2026-09-22. Ported parts keep the Apache-2.0 license
+(full text: licenses/Apache-2.0.txt); see NOTICE. The rest of this file is ours (MIT).
 """
 import importlib.util as _ilu
 import json as _json

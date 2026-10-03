@@ -5,12 +5,15 @@ The code written for this repository is licensed under the MIT License (see LICE
 This repository also contains material derived from the third-party sources below. Each license was read on the
 source page on 2026-10-03; the line shown on the page is quoted.
 
+Material ported from the Apache-2.0 Kaggle notebooks (items 1 to 3) is licensed under the Apache License,
+Version 2.0. The full license text is in licenses/Apache-2.0.txt.
+
 -------------------------------------------------------------------------------------------------------------------
 1. Public Kaggle notebook "x138" by Anvith Pothula
    https://www.kaggle.com/code/anvithpothula/biohub-0-953-lb-original
    (slug biohub-x138 when we read it on 2026-09-22; now titled "Biohub 0.953 LB | ORIGINAL", version 1)
    License shown on the page: "This Notebook has been released under the Apache 2.0 open source license."
-   SPDX: Apache-2.0. License text: https://www.apache.org/licenses/LICENSE-2.0
+   SPDX: Apache-2.0. Full license text: licenses/Apache-2.0.txt (also at https://www.apache.org/licenses/LICENSE-2.0)
 
    Used in:
    - kaggle/x138_port_946.py: the flow-relink knob constants and the functions _gapfill_bump, load_low_detections,
@@ -22,17 +25,20 @@ source page on 2026-10-03; the line shown on the page is quoted.
    learned-probability bonus inside the flow relink; our additions around it (statistics wrapper, head average,
    head ensemble, count-neutral "late" mode, fast-relink switch) are our own code.
 
-2. Public Kaggle notebook "Biohub Cell Tracking: 0.946 LB" by Reyhan Ksatria (our base notebook)
-   https://www.kaggle.com/code/reyhanksatria/biohub-cell-tracking-0-946-lb
-   (now redirects to .../biohub-cell-tracking-0-947-lb, version 5; we used the version current on 2026-09-08)
+2. Public Kaggle notebook "Biohub Cell Tracking: 0.946 LB" by Reyhan Ksatria (our base notebook), version 4
+   https://www.kaggle.com/code/reyhanksatria/biohub-cell-tracking-0-947-lb?scriptVersionId=348041532
+   (version 4 of 2026-09-07, the latest one when we pulled it on 2026-09-08; the notebook was later renamed
+   "Biohub Cell Tracking: 0.947 LB", and its old URL .../biohub-cell-tracking-0-946-lb now redirects to version 5)
    License shown on the page: "This Notebook has been released under the Apache 2.0 open source license."
-   SPDX: Apache-2.0.
+   SPDX: Apache-2.0. Full license text: licenses/Apache-2.0.txt.
    The notebook is NOT redistributed here; kaggle/fetch_base946.sh downloads it from Kaggle. Our patch modules
-   contain short excerpts of it (the anchor text each patch replaces) and modified versions of those excerpts.
+   (kaggle/*_946.py, kaggle/build_r946.py) contain short excerpts of it (the anchor text each patch replaces) and
+   modified versions of those excerpts.
 
 3. Public Kaggle notebook "Biohub Geometric Fusion" by Aman Atar
    https://www.kaggle.com/code/amanatar/biohub-geometric-fusion
    License shown on the page: "This Notebook has been released under the Apache 2.0 open source license."
+   SPDX: Apache-2.0. Full license text: licenses/Apache-2.0.txt.
    Not used directly; it is the base of the x138 notebook, so some of the x138 code above may originate here.
 
 4. Organizer baseline: royerlab/kaggle-cell-tracking-competition

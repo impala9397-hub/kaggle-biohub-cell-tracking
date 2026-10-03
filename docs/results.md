@@ -7,13 +7,17 @@ change each one made and its base, is in [`data/submissions.csv`](data/submissio
 
 ## Final standing
 
+**Silver medal**, 130th of 3,947 teams (final standings, private LB 0.92649).
+
 | | Public | Private | Rank (private) |
 |---|---|---|---|
-| Final selection 1: `headavg-pmax8` | **0.96571** | **0.92649** | **130 / 3,947 teams** |
+| Final selection 1: `headavg-pmax8` | **0.96571** | **0.92649** | **130 / 3,947 teams (silver medal)** |
 | Final selection 2: `headens5-pmax8` | 0.96534 | 0.92642 | |
-| Best private among our submissions: `iter2-swapfree-ownhead-full` (not selected) | 0.96071 | 0.93087 | about 75th |
+| Best private among our submissions: `iter2-swapfree-ownhead-full` (own head, two flow rounds, swap repair; not selected) | 0.96071 | 0.93087 | would have been 75th |
 
-For scale (final private leaderboard, read 2026-10-03): 1st 0.97759, 7th (last prize) 0.95273, 50th 0.93496.
+For scale (final private leaderboard, read 2026-10-03): 1st 0.97759, 7th (last prize) 0.95273, 50th 0.93496,
+75th 0.93069, 100th 0.92822. Our four own-head kernels (0.93068-0.93087 private) would have placed 75th-76th:
+74 teams scored above 0.93087 and 75 above 0.93068.
 Public-to-private drops were common: the team leading the public board at the deadline went from 0.978 to 0.967;
 we went from 0.966 to 0.926.
 

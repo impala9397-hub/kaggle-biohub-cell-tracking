@@ -5,7 +5,8 @@ dataset_sources only when the build env sets `V1284=1` (`V1284=late` calls `appl
 variant at the end of this file). With `V1284` unset or "0" this file is not even imported → the build is byte-identical.
 
 Source and license: X138_MODULE_SRC and the four script edits below are taken verbatim from the public notebook
-`anvithpothula/biohub-x138` (now titled "Biohub 0.953 LB | ORIGINAL"), released under Apache-2.0; see NOTICE.
+`anvithpothula/biohub-x138` (now titled "Biohub 0.953 LB | ORIGINAL"), released under Apache-2.0 (full text:
+licenses/Apache-2.0.txt); see NOTICE.
 The head weights (`anvithpothula/biohub-v1284-head-s075`) are CC0. Everything else in this file is ours (MIT).
 
 What (public `anvithpothula/biohub-x138` notebook, lines 1603–1640, pulled 2026-09-22, ported as is):

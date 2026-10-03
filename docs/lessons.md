@@ -14,8 +14,8 @@ What the final leaderboard taught us, with the evidence. Numbers are Kaggle scor
 
 The public LB disagreed: in three paired submissions, our head scored 0.0012-0.0015 *below* the public head. We
 followed the public LB and kept the public head (then a 50/50 average). On the private LB our head was **+0.0070**
-better in all three pairs. Our best own-head kernel scored 0.93087 private, about 75th; our final selection scored
-0.92649, 130th.
+better in all three pairs. Our best own-head kernel scored 0.93087 private, which would have placed 75th; our final
+selection scored 0.92649, 130th (silver medal).
 
 **It was not an isolated case.** For the 88 submissions that changed a known base kernel:
 

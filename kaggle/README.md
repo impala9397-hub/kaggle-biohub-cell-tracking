@@ -7,16 +7,54 @@ the 0.946 notebook); the markers it writes into generated notebooks still say `l
 ## Quick start
 
 ```bash
-kaggle/fetch_base946.sh                                   # public base notebook -> kaggle/base946/ (needs the Kaggle CLI)
+kaggle/fetch_base946.sh                                   # public base notebook, version 4 -> kaggle/base946/ (hash-checked)
 python kaggle/build_recipe.py --list                      # milestone recipes, S56 ... final
 python kaggle/build_recipe.py final-headavg-pmax8 out/final
 python kaggle/build_recipe.py final-headavg-pmax8 --print-env   # the build_r946.py environment behind it
 kaggle kernels push -p out/final                          # needs the owner's private weight datasets
 ```
 
-`KAGGLE_OWNER` (default `impala9397`) sets the kernel owner. `BASE946_DIR` points the builder at another copy of
-the base notebook. The builder checks the SHA-256 of the base code cell and refuses any other version
-(`ALLOW_BASE_MISMATCH=1` overrides).
+`fetch_base946.sh` needs `curl` and `python3`, no Kaggle credentials. We built on version 4 of the base notebook;
+the author has since published version 5, which is a different notebook, and `kaggle kernels pull` returns only the
+latest version (a version-pinned pull such as `owner/slug/4` is refused with "403 Forbidden" by Kaggle CLI 2.2.4).
+The script therefore downloads version 4 from Kaggle's public download link for that version and installs it only
+if the SHA-256 of its code cell matches. If the download fails, download
+[version 4](https://www.kaggle.com/code/reyhanksatria/biohub-cell-tracking-0-947-lb?scriptVersionId=348041532) by
+hand and run `kaggle/fetch_base946.sh <downloaded .ipynb>`; the same check applies.
+
+`KAGGLE_OWNER` (default `impala9397`) sets the kernel owner. `BASE946_DIR` points the fetch script, the builder and
+the tests at another copy of the base notebook. The builder checks the SHA-256 of the base code cell and refuses any
+other version (`ALLOW_BASE_MISMATCH=1` overrides).
+
+## Verified: rebuilding the final kernels (2026-10-03)
+
+These commands were run as written on 2026-10-03 (macOS, Kaggle CLI 2.2.4; the `kaggle kernels pull` line needs the
+owner's account, because the kernels are private):
+
+```bash
+T=$(mktemp -d)
+BASE946_DIR=$T/base946 kaggle/fetch_base946.sh
+# base notebook code cell sha256 5e940fc76d42f12dfa3e962a16509441a2c1ffea5be2b97b9d7a9e774ed72d10: OK
+BASE946_DIR=$T/base946 python kaggle/build_recipe.py final-headavg-pmax8 $T/build/headavg
+kaggle kernels pull impala9397/ctg-lane-r-headavg-pmax8 -p $T/submitted/headavg -m
+code() { jq -r '.cells[] | select(.cell_type == "code") | .source | if type == "array" then join("") else . end' "$1"; }
+diff <(code $T/submitted/headavg/*.ipynb) <(code $T/build/headavg/notebook.ipynb)
+```
+
+The same was done for the second final selection (`final-headens5-pmax8` against
+`impala9397/ctg-lane-r-headens5-pmax8`). Both kernels are at version 1 on Kaggle, the version that was scored.
+
+| Check | `headavg-pmax8` | `headens5-pmax8` |
+|---|---|---|
+| Cells | markdown + code; markdown identical | same |
+| Code cell length | 4,250 lines in both | 4,252 lines in both |
+| Lines that differ | 37: 14 docstring lines and 12 comment lines translated to English, 11 comments whose only change is the path `kaggle/lane-r/` -> `kaggle/` (3 of these 23 comments sit inside embedded runtime-patch text) | the same 37 |
+| Code compared without comments, docstrings and those paths (Python AST, embedded patch text included) | identical | identical |
+| `kernel-metadata.json` | identical except the code file name, Kaggle's numeric id, and the dataset list, which Kaggle returns lower-cased and in its own order (the same six datasets) | same |
+| Notebook-level metadata | the pulled copy has Kaggle's (nbformat 4.4, no papermill record); the build keeps the base notebook's | same |
+
+So the repository rebuilds the submitted final kernels; the only differences are comments, docstrings, file paths
+and ids.
 
 ## What a build does
 
@@ -62,7 +100,7 @@ div_dip_946 -> node_select_946 -> relink_prob_946 -> x138_port_946 -> { swapfix_
 | `divfork_946.py` | metric-aware fork pruning (geometric, chromatin) | `BIOHUB_DIVFORK` | off |
 | `csvfloat_946.py` | float coordinates in `submission.csv` | `BIOHUB_CSV_FLOAT=1` | off |
 | `coordhead_capture_946.py` | builds the kernel that captures head features on training videos | | |
-| `fetch_base946.sh` | pulls and verifies the public base notebook | | |
+| `fetch_base946.sh` | downloads version 4 of the public base notebook and verifies its hash | | |
 | `kernel-metadata.template.json` | Kaggle kernel settings shared by all builds | | |
 
 Code that was ported from the public x138 notebook (Apache-2.0) is marked in `x138_port_946.py` and `v1284_946.py`
@@ -72,7 +110,8 @@ and listed in [NOTICE](../NOTICE).
 
 - `tests/` builds kernels on CPU (with the base notebook present) and checks that an "off" build only adds inert
   lines, that each knob changes exactly the intended lines, that runtime anchors match the organizer's script once,
-  and that the ported functions behave as expected on synthetic data.
+  and that the ported functions behave as expected on synthetic data. `tests/test_fetch_base946.py` checks that
+  `fetch_base946.sh` pins the builder's hash and installs nothing else (run on local files, no network).
 - When this repository was assembled from our working repository, every recipe here (13 milestones plus 7 variants)
   was built with both code bases. The notebooks matched line for line except translated comments and file paths,
   and the rebuilt final notebook sets the same 78 knob lines, in the same order, as the kernel we submitted.

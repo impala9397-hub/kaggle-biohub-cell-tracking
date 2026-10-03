@@ -2,7 +2,7 @@
      (`uv run --no-sync python scripts/make_figures.py --png`; export pipeline.svg too) and replace the relative
      image paths. The GitHub repository has been public since 2026-10-03. -->
 
-# Incremental Refinement of a Public Cell-Tracking Pipeline: Coordinate Regression, Division Gating, and Leaderboard-Robust Model Selection
+# Embryonic Cell Tracking with an Ensemble of 3D U-Net Node Transformers, Flow-Field Relinking and Division Repair
 
 *Subtitle: what held up on the private leaderboard, and what the public one missed about our own head*
 

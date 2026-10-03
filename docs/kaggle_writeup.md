@@ -2,9 +2,9 @@
      (`uv run --no-sync python scripts/make_figures.py --png`; export pipeline.svg too) and replace the relative
      image paths. The GitHub repository has been public since 2026-10-03. -->
 
-# Embryonic Cell Tracking with an Ensemble of 3D U-Net Node Transformers, Learned Coordinate Refinement, Flow-Field Relinking and Division Repair
+# 3D U-Net Node Transformer Ensemble with Coordinate Refinement and Graph Repair
 
-*Subtitle: what held up on the private leaderboard, and what the public one missed about our own head*
+*Subtitle: Flow-field relinking and image-evidence division repair for 3D+t tracking of zebrafish embryo nuclei.*
 
 Thank you to Biohub and the organizers for a well-specified tracking problem and a strong baseline, and to the
 authors of the public notebooks and weights we built on (credited below).

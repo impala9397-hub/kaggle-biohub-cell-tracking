@@ -20,8 +20,6 @@ hidden test set within 12 hours on a GPU, offline.
 | Rank | | **130 / 3,947 teams (top 3.3 %)** |
 | Our best private score: own coordinate head (not selected) | 0.96071 | 0.93087 (would have placed 75th) |
 
-**Silver medal**, 130th of 3,947 teams (final standings, private LB 0.92649).
-
 Best public score: 0.96571 (the leaderboard truncated it to 0.965; public rank 53 at the deadline). The 75th place
 of our best own-head kernel (which also ran two flow rounds and the swap repair) is counted on the final private
 leaderboard: 74 teams scored above 0.93087.

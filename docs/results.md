@@ -7,8 +7,6 @@ change each one made and its base, is in [`data/submissions.csv`](data/submissio
 
 ## Final standing
 
-**Silver medal**, 130th of 3,947 teams (final standings, private LB 0.92649).
-
 | | Public | Private | Rank (private) |
 |---|---|---|---|
 | Final selection 1: `headavg-pmax8` | **0.96571** | **0.92649** | **130 / 3,947 teams (silver medal)** |

@@ -22,3 +22,6 @@ uv.lock.bak
 docs/figures/*.png
 # Architecture figures are published as PNG (PlotNeuralNet output; vector PDF alongside)
 !docs/figures/arch_*.png
+!docs/figures/pipeline.png
+!docs/figures/lb_steps.png
+!docs/figures/public_vs_private_deltas.png

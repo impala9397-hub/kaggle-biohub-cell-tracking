@@ -1,0 +1,159 @@
+ref,submitted_utc,phase,name,base,change,public,private,final_selection
+55608251,2026-08-18 20:34,own pipeline,S4 baseline,,"Organizer baseline (UNet + transformer + ILP), end to end",0.81006,0.81161,0
+55626253,2026-08-19 15:09,own pipeline,s6,,Own detector/linker pipeline on the organizer baseline,0.82469,0.82502,0
+55633609,2026-08-19 23:49,own pipeline,s7 gbdt-link,,Own detector/linker pipeline on the organizer baseline,0.82218,0.82187,0
+55636611,2026-08-20 03:09,own pipeline,s7 gbdt-link + N4 repair (gap close + linefit smoothing),,Own detector/linker pipeline on the organizer baseline,0.85154,0.84959,0
+55640988,2026-08-20 07:27,own pipeline,s7 v3,,Own detector/linker pipeline on the organizer baseline,0.85154,0.84959,0
+55648785,2026-08-20 14:58,own pipeline,s7 v4,,Own detector/linker pipeline on the organizer baseline,0.85264,0.85319,0
+55653806,2026-08-20 20:16,own pipeline,s7 v5,,Own detector/linker pipeline on the organizer baseline,0.86141,0.86064,0
+55654365,2026-08-20 21:01,own pipeline,s7 v6,,Own detector/linker pipeline on the organizer baseline,0.88392,0.87957,0
+55657774,2026-08-21 01:39,own pipeline,s7 v7,,Own detector/linker pipeline on the organizer baseline,0.88568,0.88122,0
+55658490,2026-08-21 02:36,own pipeline,s7 v8,,Own detector/linker pipeline on the organizer baseline,0.88880,0.87828,0
+55659159,2026-08-21 03:20,own pipeline,s7 v9,,Own detector/linker pipeline on the organizer baseline,0.86112,0.83562,0
+55660584,2026-08-21 04:34,own pipeline,s7 v10,,Own detector/linker pipeline on the organizer baseline,0.86407,0.84131,0
+55667241,2026-08-21 10:41,own pipeline,s7 v11 probe,,Own detector/linker pipeline on the organizer baseline,0.89198,0.88607,0
+55680501,2026-08-22 01:22,own pipeline,s7 v13,,Own detector/linker pipeline on the organizer baseline,0.89250,0.88650,0
+55680513,2026-08-22 01:22,own pipeline,s7 v13b,,Own detector/linker pipeline on the organizer baseline,0.89141,0.89066,0
+55680861,2026-08-22 01:51,own pipeline,s7 v13c,,Own detector/linker pipeline on the organizer baseline,0.89207,0.88985,0
+55694976,2026-08-22 16:12,own pipeline,s7 v14,,Own detector/linker pipeline on the organizer baseline,0.89293,0.88751,0
+55696638,2026-08-22 17:56,public two-seed stack,S1,,Public two-seed stack (pilkwang weights) with our changes,0.91294,0.89740,0
+55701555,2026-08-23 00:02,public two-seed stack,S2,,Public two-seed stack (pilkwang weights) with our changes,0.91109,0.90114,0
+55701588,2026-08-23 00:03,own pipeline,s7 v21,,Own detector/linker pipeline on the organizer baseline,0.89331,0.87573,0
+55701609,2026-08-23 00:04,own pipeline,s7 v22,,Own detector/linker pipeline on the organizer baseline,0.89913,0.89017,0
+55716766,2026-08-23 14:05,own pipeline,lane-H hybrid v4,,Hybrid: public two-seed front end + own linker,0.90052,0.89610,0
+55725314,2026-08-23 21:04,own pipeline,lane-H2,,Hybrid: public two-seed front end + own linker,0.90252,0.88990,0
+55729179,2026-08-24 01:07,own pipeline,s7 v23,,Own detector/linker pipeline on the organizer baseline,0.89961,0.89033,0
+55748222,2026-08-24 16:23,public two-seed stack,S8,,Public two-seed stack (pilkwang weights) with our changes,0.90983,0.89332,0
+55749998,2026-08-24 17:44,public two-seed stack,S9 (tuned),,Public two-seed stack (pilkwang weights) with our changes,0.90942,0.89402,0
+55761549,2026-08-25 05:00,public two-seed stack,S10,,Public two-seed stack (pilkwang weights) with our changes,0.91441,0.89801,0
+55761559,2026-08-25 05:01,public two-seed stack,S11,,Public two-seed stack (pilkwang weights) with our changes,0.91439,0.89796,0
+55781392,2026-08-26 00:18,public two-seed stack,S14,,Public two-seed stack (pilkwang weights) with our changes,0.91065,0.89368,0
+55831542,2026-08-28 02:34,public two-seed stack,S15,,Public two-seed stack (pilkwang weights) with our changes,0.91374,0.89943,0
+55831582,2026-08-28 02:37,public two-seed stack,S16,,Public two-seed stack (pilkwang weights) with our changes,0.90478,0.89362,0
+55856748,2026-08-29 01:11,public two-seed stack,S17,,Public two-seed stack (pilkwang weights) with our changes,0.92086,0.90412,0
+55856756,2026-08-29 01:12,public two-seed stack,S18,,Public two-seed stack (pilkwang weights) with our changes,0.91523,0.89769,0
+55863276,2026-08-29 08:44,public two-seed stack,S19,,Public two-seed stack (pilkwang weights) with our changes,0.92240,0.90334,0
+55870265,2026-08-29 15:31,public two-seed stack,S20,,Public two-seed stack (pilkwang weights) with our changes,0.92373,0.90670,0
+55873842,2026-08-29 19:13,own pipeline,Origin Phase-1,,Support-pack UNet + ILP with own repair rules,0.87956,0.87155,0
+55904808,2026-08-31 02:08,public two-seed stack,S21,,Public two-seed stack (pilkwang weights) with our changes,0.92389,0.90360,0
+55904817,2026-08-31 02:08,public two-seed stack,S22,,Public two-seed stack (pilkwang weights) with our changes,0.93050,0.89981,0
+55917497,2026-08-31 14:19,public two-seed stack,S23,,Public two-seed stack (pilkwang weights) with our changes,0.92792,0.89823,0
+55918190,2026-08-31 14:56,public two-seed stack,S24,,Public two-seed stack (pilkwang weights) with our changes,0.92731,0.89475,0
+55928665,2026-09-01 01:25,public two-seed stack,S25,,Public two-seed stack (pilkwang weights) with our changes,0.92480,0.90133,0
+55928677,2026-09-01 01:25,public two-seed stack,S26,,Public two-seed stack (pilkwang weights) with our changes,0.93120,0.90141,0
+55941590,2026-09-01 14:00,public two-seed stack,S27,,Public two-seed stack (pilkwang weights) with our changes,0.92999,0.90132,0
+55941601,2026-09-01 14:00,public two-seed stack,S28,,Public two-seed stack (pilkwang weights) with our changes,0.92969,0.90215,0
+55943151,2026-09-01 15:40,public two-seed stack,S29,,Public two-seed stack (pilkwang weights) with our changes,0.92709,0.89650,0
+55950327,2026-09-02 00:14,public two-seed stack,S30,,Public two-seed stack (pilkwang weights) with our changes,0.93201,0.90215,0
+55950339,2026-09-02 00:15,public two-seed stack,S31,,Public two-seed stack (pilkwang weights) with our changes,0.92873,0.90053,0
+55950855,2026-09-02 00:46,public two-seed stack,S32,,Public two-seed stack (pilkwang weights) with our changes,0.92888,0.90048,0
+55963934,2026-09-02 15:07,public two-seed stack,S33,,Public two-seed stack (pilkwang weights) with our changes,0.93091,0.90274,0
+55971599,2026-09-03 01:18,public two-seed stack,S34,,Public two-seed stack (pilkwang weights) with our changes,0.91668,0.89241,0
+55982813,2026-09-03 14:21,public two-seed stack,S35,,Public two-seed stack (pilkwang weights) with our changes,0.92389,0.90064,0
+56002705,2026-09-04 01:57,public two-seed stack,S37,,Public two-seed stack (pilkwang weights) with our changes,0.93170,0.90371,0
+56002718,2026-09-04 01:59,public two-seed stack,S36,,Public two-seed stack (pilkwang weights) with our changes,0.91544,0.89484,0
+56011786,2026-09-04 11:37,public two-seed stack,S38,,Public two-seed stack (pilkwang weights) with our changes,0.93312,0.90208,0
+56019847,2026-09-04 21:33,public two-seed stack,S44,,Public two-seed stack (pilkwang weights) with our changes,0.93322,0.90199,0
+56023897,2026-09-05 03:21,public two-seed stack,S45,,Public two-seed stack (pilkwang weights) with our changes,0.93156,0.90114,0
+56023899,2026-09-05 03:21,public two-seed stack,S41,,Public two-seed stack (pilkwang weights) with our changes,0.92756,0.90106,0
+56040198,2026-09-05 20:31,public two-seed stack,S46,,Public two-seed stack (pilkwang weights) with our changes,0.93147,0.90304,0
+56048293,2026-09-06 06:09,public two-seed stack,S48,,Public two-seed stack (pilkwang weights) with our changes,0.92876,0.90227,0
+56048463,2026-09-06 06:19,public two-seed stack,S47,,Public two-seed stack (pilkwang weights) with our changes,0.93165,0.90252,0
+56059523,2026-09-06 16:31,public two-seed stack,S49,,Public two-seed stack (pilkwang weights) with our changes,0.93262,0.90373,0
+56066783,2026-09-07 02:02,public two-seed stack,S50,,Public two-seed stack (pilkwang weights) with our changes,0.93419,0.90162,0
+56066799,2026-09-07 02:03,public two-seed stack,S51,,Public two-seed stack (pilkwang weights) with our changes,0.93296,0.90205,0
+56078285,2026-09-07 14:06,public two-seed stack,S52,,Public two-seed stack (pilkwang weights) with our changes,0.93455,0.90100,0
+56078300,2026-09-07 14:06,public two-seed stack,S53,,Public two-seed stack (pilkwang weights) with our changes,,,0
+56099161,2026-09-08 13:18,public two-seed stack,S55,,Public two-seed stack (pilkwang weights) with our changes,0.92970,0.90277,0
+56108459,2026-09-08 23:09,public 0.946 lineage,S56,public 0.946 notebook,Reproduction of the public 0.946 notebook on the original pilkwang weights,0.94489,0.91406,0
+56108462,2026-09-08 23:09,public 0.946 lineage,S57,S56,"+ our third detector (seedC4, epoch 100) blended at weight 0.20",0.95000,0.91558,0
+56108733,2026-09-08 23:35,public 0.946 lineage,S58,S56,Detection threshold 0.965 -> 0.96,0.94518,0.91517,0
+56108761,2026-09-08 23:38,public 0.946 lineage,S59,S57,Detection threshold 0.965 -> 0.96,0.95094,0.91655,0
+56114392,2026-09-09 05:18,public 0.946 lineage,S60,S56,Secondary edge weight 0.15 -> 0.40,0.94377,0.91436,0
+56114401,2026-09-09 05:19,public 0.946 lineage,S61,S56,Secondary edge weight 0.15 -> 0.25,0.94482,0.91384,0
+56114406,2026-09-09 05:19,public 0.946 lineage,S64,S56,Short-track rescue trigger 0.10 -> 0 (no score returned),,,0
+56114898,2026-09-09 05:51,public 0.946 lineage,S62,S56,Relink learned bonus 1.0 -> 2.0,0.94471,0.91359,0
+56114915,2026-09-09 05:52,public 0.946 lineage,S63,S56,Relink learned bonus 1.0 -> 0.5,0.94526,0.91394,0
+56132798,2026-09-10 00:00,public 0.946 lineage,S65,S57,Third-detector weight 0.20 -> 0.30,0.94769,0.91557,0
+56132838,2026-09-10 00:00,public 0.946 lineage,S66,S57,Tight relink pass admits pairs by probability >= 0.5,0.95058,0.91572,0
+56132874,2026-09-10 00:01,public 0.946 lineage,S67,S57,Third-detector weight 0.20 -> 0.10,0.94821,0.91530,0
+56132906,2026-09-10 00:01,public 0.946 lineage,S68,S57,Third detector epoch 100 -> 150,0.95035,0.91397,0
+56132929,2026-09-10 00:02,public 0.946 lineage,S69,S57,Tight relink pass admits pairs by velocity prediction,0.94977,0.91492,0
+56157037,2026-09-11 02:46,public 0.946 lineage,S71,S57,DeepCenter safe-division veto threshold 0.25 -> 0.12,0.95000,0.91781,0
+56157186,2026-09-11 02:57,public 0.946 lineage,S70,S57,"Division-local detection relaxation + candidate routing, DeepCenter 0.12",0.95069,0.91759,0
+56157502,2026-09-11 03:17,public 0.946 lineage,S72,S57,"Division-local detection relaxation + candidate routing, DeepCenter 0.18",0.95040,0.91612,0
+56166899,2026-09-11 14:12,public 0.946 lineage,S73,S57,Third detector = detection-only model on GT-corrected dense pseudo-labels (epoch 30),0.94444,0.92712,0
+56167481,2026-09-11 14:47,public 0.946 lineage,S75,S57,Gap-closing radius 5.0 -> 5.8 um,0.94996,0.91495,0
+56176106,2026-09-12 01:47,public 0.946 lineage,S76,S57,Primary detector 50-epoch -> 350-epoch public weights,0.94707,0.90817,0
+56185365,2026-09-12 12:21,public 0.946 lineage,S78,S57,Consensus veto on final edges (variant),0.94991,0.91488,0
+56185434,2026-09-12 12:26,public 0.946 lineage,S77,S57,Consensus veto on final edges (variant),0.94872,0.91270,0
+56185791,2026-09-12 12:50,public 0.946 lineage,S79,S57,Consensus veto on final edges (variant),0.94993,0.91464,0
+56197472,2026-09-13 02:50,public 0.946 lineage,S80,S57,Safe-division repair off (no forks at all),0.91218,0.89432,0
+56197483,2026-09-13 02:50,public 0.946 lineage,S81,S57,Sister-symmetry gate 0.6 -> 1.2 (looser),0.94172,0.91499,0
+56197716,2026-09-13 03:08,public 0.946 lineage,S82,S57,Divergence gate 2.25 -> 0 um (off),0.93947,0.91637,0
+56198871,2026-09-13 04:24,public 0.946 lineage,S83,S57,Division gate = image-evidence combo score z(dip) + z(sym) - z(div),0.95315,0.92259,0
+56199905,2026-09-13 05:31,public 0.946 lineage,S84,S57,Relink gates widened where cells are sparse,0.95010,0.91413,0
+56216914,2026-09-14 00:02,public 0.946 lineage,S85,S83,Combo threshold at 0.7x pass volume,0.95217,0.92080,0
+56216959,2026-09-14 00:03,public 0.946 lineage,S86,S83,Combo threshold at 1.5x pass volume (-2.6659),0.95406,0.92371,0
+56216997,2026-09-14 00:04,public 0.946 lineage,S87,S83,Combo threshold at 0.55x pass volume,0.95270,0.91897,0
+56217038,2026-09-14 00:05,public 0.946 lineage,S89,S83,Combo threshold at 2.0x pass volume,0.95034,0.92443,0
+56217079,2026-09-14 00:06,public 0.946 lineage,S90,S83,Combo threshold at 0.4x pass volume,0.95054,0.91509,0
+56240967,2026-09-15 00:03,public 0.946 lineage,S91,S86,"+ metaphase-plate orientation term, weight 1.0",0.95097,0.92360,0
+56241021,2026-09-15 00:04,public 0.946 lineage,S88,S83,"+ metaphase-plate orientation term, weight 1.0",0.95192,0.92314,0
+56241066,2026-09-15 00:05,public 0.946 lineage,S93,S83,Combo threshold at 1.25x pass volume,0.95336,0.92371,0
+56241112,2026-09-15 00:06,public 0.946 lineage,S92,S86,"+ metaphase-plate orientation term, weight 0.5",0.95214,0.92424,0
+56241152,2026-09-15 00:07,public 0.946 lineage,S97,S86,+ orientation 0.5 + daughter opening angle 0.75,0.95065,0.92495,0
+56264593,2026-09-16 00:02,public 0.946 lineage,S99,S86,"Third detector = 3-frame model, epoch 6",0.95103,0.92338,0
+56264647,2026-09-16 00:03,public 0.946 lineage,S100,S86,"Third detector = 3-frame model, epoch 12",0.95327,0.92844,0
+56264695,2026-09-16 00:04,public 0.946 lineage,S99-ep16,S86,"Third detector = 3-frame model, epoch 16",0.95255,0.92705,0
+56264748,2026-09-16 00:05,public 0.946 lineage,S99-ep18,S86,"Third detector = 3-frame model, epoch 18",0.95179,0.92766,0
+56264791,2026-09-16 00:06,public 0.946 lineage,S99-ep20,S86,"Third detector = 3-frame model, epoch 20",0.95350,0.92460,0
+56289322,2026-09-17 00:02,public 0.946 lineage,T01,S86,Detector TTA = training-matched flip set,0.94400,0.91708,0
+56289374,2026-09-17 00:03,public 0.946 lineage,T05,S86,Detector TTA = corrected 8-view D4 set,0.95093,0.92538,0
+56289412,2026-09-17 00:04,public 0.946 lineage,X01,S86,Tight relink gate 6.0 -> 5.5 um,0.95382,0.92300,0
+56289460,2026-09-17 00:05,public 0.946 lineage,S86-repeat,S86,Byte-identical resubmission (noise floor),0.95406,0.92371,0
+56289493,2026-09-17 00:06,public 0.946 lineage,N01,S86,"Drop weak, isolated nodes (node selection, -11.4% nodes)",0.92841,0.87467,0
+56315831,2026-09-18 00:03,public 0.946 lineage,N05,S86,+ learned-probability bonus (w = 32) in the final relink,0.95505,0.92491,0
+56315914,2026-09-18 00:04,public 0.946 lineage,X2-EP1,S86,"Third detector on a 2x XY grid, epoch 1",0.95104,0.92387,0
+56316320,2026-09-18 00:18,public 0.946 lineage,X2-EP10,S86,"Third detector on a 2x XY grid, epoch 10",0.95020,0.92055,0
+56316333,2026-09-18 00:19,public 0.946 lineage,X2-EP5,S86,"Third detector on a 2x XY grid, epoch 5",0.95101,0.92752,0
+56347067,2026-09-19 03:24,public 0.946 lineage,N06-pctl060,N05,"Learned division veto, prune bottom 17%",0.95505,0.91963,0
+56347075,2026-09-19 03:25,public 0.946 lineage,N05-t1-ratio050,N05,Next-frame two-peak division filter,0.95597,0.92265,0
+56375719,2026-09-20 01:19,public 0.946 lineage,N05-rw8,N05,Relink bonus weight 32 -> 8,0.95449,0.92476,0
+56375730,2026-09-20 01:20,public 0.946 lineage,N05-rw128,N05,Relink bonus weight 32 -> 128,0.95504,0.92490,0
+56376320,2026-09-20 01:52,public 0.946 lineage,N06-pctl040,N05,"Learned division veto, prune bottom 25%",0.95288,0.91557,0
+56480833,2026-09-23 03:02,public 0.946 lineage,motion-gate,N05,Bulk-motion gate and prediction in the relink,0.95601,0.92528,0
+56481477,2026-09-23 03:33,public 0.946 lineage,x138gap,N05,x138 readmit + low-detection gap fill (+0.8% nodes),0.95458,0.92518,0
+56481700,2026-09-23 03:45,public 0.946 lineage,x138all,N05,"All x138 additions (flow relink, readmit, gap fill)",0.95649,0.92555,0
+56482170,2026-09-23 04:07,public 0.946 lineage,x138flow,N05,+ x138 flow-field relink,0.95695,0.92538,0
+56493406,2026-09-23 12:42,public 0.946 lineage,synthdet16,N05,"Third detector pretrained on synthetic data, epoch 16",0.95137,0.92484,0
+56506152,2026-09-24 00:01,public 0.946 lineage,flowdivsafe,x138flow,Flow relink may not take free safe-division daughters,0.95490,0.92442,0
+56506160,2026-09-24 00:01,public 0.946 lineage,flow-motion,x138flow,Bulk-motion prior inside the flow linker,0.95635,0.92532,0
+56506165,2026-09-24 00:01,public 0.946 lineage,flowdivsafe-motion,x138flow,Division safety + motion prior,0.95522,0.92461,0
+56506171,2026-09-24 00:01,public 0.946 lineage,synthdet199-ep28,N05,"Synthetic-pretrained third detector, longer real fine-tuning",0.94943,0.92532,0
+56510444,2026-09-24 03:25,public 0.946 lineage,x138flow-csvfloat,x138flow,Float coordinates in submission.csv,0.94569,0.91871,0
+56534415,2026-09-25 00:02,public 0.946 lineage,flow-edgeratio,x138flow,Secondary edge weight 0.80 + tertiary edge weight 0.20,0.95539,0.92604,0
+56534421,2026-09-25 00:02,public 0.946 lineage,flow-sew080,x138flow,Secondary edge weight 0.15 -> 0.80,0.95607,0.92573,0
+56534425,2026-09-25 00:02,public 0.946 lineage,flow-iter2,x138flow,Two flow-refinement rounds,0.95715,0.92539,0
+56534433,2026-09-25 00:02,public 0.946 lineage,flow-tight8,x138flow,Flow tight gate 7 -> 8 um,0.95362,0.92439,0
+56534440,2026-09-25 00:02,public 0.946 lineage,flow-combo30,x138flow,Stricter combo threshold (fewer divisions),0.95666,0.92425,0
+56564306,2026-09-26 00:20,public 0.946 lineage,flow-v1284late,x138flow,"Public V1284 head, CSV coordinates only",0.95946,0.92626,0
+56564308,2026-09-26 00:20,public 0.946 lineage,flow-v1284,x138flow,"+ public V1284 coordinate head, full mode",0.96169,0.92372,0
+56564311,2026-09-26 00:20,public 0.946 lineage,iter2-v1284late,flow-iter2,"Public V1284 head, CSV coordinates only",0.95967,0.92628,0
+56564313,2026-09-26 00:20,public 0.946 lineage,iter3,x138flow,Three flow-refinement rounds,0.95724,0.92537,0
+56583238,2026-09-26 15:45,public 0.946 lineage,iter2-swapfree-ownhead-full,flow-iter2,"Swap repair + our own head, full mode",0.96071,0.93087,0
+56591895,2026-09-27 00:01,public 0.946 lineage,iter2-v1284,flow-iter2,"Public V1284 head, full mode",0.96193,0.92372,0
+56591902,2026-09-27 00:01,public 0.946 lineage,iter2-ownhead,flow-iter2,"Our own head, full mode",0.96059,0.93075,0
+56591912,2026-09-27 00:01,public 0.946 lineage,iter2-swapfree-v1284,iter2-v1284,+ one-to-one swap repair before smoothing,0.96192,0.92381,0
+56591914,2026-09-27 00:01,public 0.946 lineage,iter2-swapfree-ownhead-late,flow-iter2,"Swap repair + our own head, CSV coordinates only",0.95957,0.93068,0
+56592384,2026-09-27 00:06,public 0.946 lineage,flow-ownhead,flow-v1284,Our own head instead of the public head,0.96023,0.93073,0
+56622587,2026-09-28 00:01,public 0.946 lineage,flow-v1284-noguard,flow-v1284,Retention guard off (-4.5% nodes),0.95859,0.92276,0
+56622718,2026-09-28 00:02,public 0.946 lineage,flow-v1284-pmax8,flow-v1284,Safe-division gate 9 -> 8 um,0.96361,0.92326,0
+56622804,2026-09-28 00:03,public 0.946 lineage,flow-v1284-divprune-chroma,flow-v1284,Prune forks whose brighter child exceeds 1.1x parent chromatin,0.96044,0.92392,0
+56622872,2026-09-28 00:03,public 0.946 lineage,flow-v1284-headavg,flow-v1284,+ head average: public and our own head,0.96381,0.92629,0
+56622939,2026-09-28 00:04,public 0.946 lineage,iter2-swapfree-v1284-noguard,iter2-swapfree-v1284,Retention guard off,0.95880,0.92285,0
+56655723,2026-09-29 00:02,public 0.946 lineage,headavg-pmax8,flow-v1284-headavg,+ safe-division gate 8 um (final selection 1),0.96571,0.92649,1
+56655856,2026-09-29 00:02,public 0.946 lineage,headens5-pmax8,flow-v1284,"0.5 public head + 0.5 mean of 5 own-head seeds, gate 8 um (final selection 2)",0.96534,0.92642,1
+56655970,2026-09-29 00:03,public 0.946 lineage,headavg-pmax7,flow-v1284-headavg,Safe-division gate 7 um,0.96178,0.92259,0
+56656046,2026-09-29 00:04,public 0.946 lineage,headavg-pmax75,flow-v1284-headavg,Safe-division gate 7.5 um,0.96571,0.92573,0
+56656113,2026-09-29 00:05,public 0.946 lineage,headavg-pmax8-chroma,headavg-pmax8,+ chromatin fork prune,0.96441,0.92668,0

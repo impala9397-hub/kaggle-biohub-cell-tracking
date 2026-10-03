@@ -1,0 +1,125 @@
+{
+  "_comment": [
+    "Named build recipes for kaggle/build_recipe.py. Each recipe is the build_r946.py environment of one submitted kernel.",
+    "'extends' copies the parent's env and overrides, then applies this recipe's own (overrides are merged key by key).",
+    "Scores are the Kaggle leaderboard values of the submitted kernel (public = ~29% of the hidden test data, private = ~71%).",
+    "S56 and S57 were built before the always-on robustness line (BIOHUB_ALLOW_ARTIFACT_FALLBACK=0); NO_ROBUSTNESS=1 rebuilds them byte for byte.",
+    "Kernels built before the division-gate t+1 knobs existed (S83, S86) differ from a rebuild by inert, default-off lines only."
+  ],
+  "knob_sets": {
+    "division_gate_s83": {
+      "BIOHUB_DIV_DIP_MODE": "4", "BIOHUB_DIV_COMBO_MAX": "-3.0262", "BIOHUB_DIV_DIV_MISSING": "-9.0",
+      "BIOHUB_DIV_Z_DIP_MU": "0.6187965957674368", "BIOHUB_DIV_Z_DIP_SD": "0.24116301719876107",
+      "BIOHUB_DIV_Z_SYM_MU": "1.1339288035330837", "BIOHUB_DIV_Z_SYM_SD": "0.5528905816566464",
+      "BIOHUB_DIV_Z_DIV_MU": "1.239899766683567", "BIOHUB_DIV_Z_DIV_SD": "2.1790329837769318"
+    },
+    "flow_relink_x138": {
+      "BIOHUB_MOTION_RELINK_FLOW_MODE": "seed", "BIOHUB_MOTION_RELINK_FLOW_K": "12",
+      "BIOHUB_MOTION_RELINK_FLOW_RADIUS_UM": "40.0", "BIOHUB_MOTION_RELINK_FLOW_EXCLUDE_UM": "1.5",
+      "BIOHUB_MOTION_RELINK_FLOW_MIN_SAMPLES": "4", "BIOHUB_MOTION_RELINK_FLOW_GATE": "1",
+      "BIOHUB_MOTION_RELINK_FLOW_ITER": "1", "BIOHUB_MOTION_RELINK_FLOW_SEED_GATE_UM": "0",
+      "BIOHUB_MOTION_RELINK_FLOW_RAW_ADMIT": "1", "BIOHUB_MOTION_RELINK_FLOW_Z_WEIGHT": "1.0",
+      "BIOHUB_MOTION_RELINK_FLOW_RAW_COST": "0", "BIOHUB_MOTION_RELINK_FLOW_TIGHT_UM": "7.0",
+      "BIOHUB_MOTION_RELINK_FLOW_RELAXED_UM": "0"
+    }
+  },
+  "recipes": {
+    "s56": {
+      "slug": "ctg-lane-r-base946",
+      "description": "Reproduction of the public 0.946 notebook on the original pilkwang weights.",
+      "env": {"NO_ROBUSTNESS": "1"},
+      "submission": {"name": "S56", "ref": 56108459}
+    },
+    "s57": {
+      "extends": "s56",
+      "slug": "ctg-lane-r-tertiary-c4-w020",
+      "description": "+ our third detector (seedC4, epoch 100) blended at weight 0.20.",
+      "env": {"TERTIARY_SEED_DATASET": "impala9397/ctg-seedC4-snap"},
+      "submission": {"name": "S57", "ref": 56108462}
+    },
+    "s83": {
+      "slug": "ctg-lane-r-s83-divcombo",
+      "description": "+ division gate driven by image evidence: combo score z(dip) + z(sym) - z(div) <= -3.0262.",
+      "env": {"TERTIARY_SEED_DATASET": "impala9397/ctg-seedC4-snap", "NOTEBOOK_PATCH": "kaggle/div_dip_946.py"},
+      "overrides": ["division_gate_s83"],
+      "submission": {"name": "S83", "ref": 56198871}
+    },
+    "s86": {
+      "extends": "s83",
+      "slug": "ctg-lane-r-s86-combo-x150",
+      "description": "Combo threshold loosened to 1.5x the S83 pass volume (-2.6659).",
+      "overrides": [{"BIOHUB_DIV_COMBO_MAX": "-2.6659"}],
+      "submission": {"name": "S86", "ref": 56216959}
+    },
+    "n05": {
+      "extends": "s86",
+      "slug": "ctg-lane-r-n05-relinkprob",
+      "description": "+ learned-probability bonus (w = 32) on every candidate pair of the final motion relink.",
+      "env": {"NOTEBOOK_PATCH": "kaggle/relink_prob_946.py"},
+      "overrides": [{"BIOHUB_RELINK_PROB_W": "32"}],
+      "submission": {"name": "N05", "ref": 56315831}
+    },
+    "x138flow": {
+      "extends": "n05",
+      "slug": "ctg-lane-r-n05-x138flow",
+      "description": "+ flow-field relink ported from the public x138 notebook.",
+      "env": {"NOTEBOOK_PATCH": "kaggle/x138_port_946.py"},
+      "overrides": ["flow_relink_x138"],
+      "submission": {"name": "x138flow", "ref": 56482170}
+    },
+    "flow-iter2": {
+      "extends": "x138flow",
+      "slug": "ctg-lane-r-flow-iter2",
+      "description": "Two flow-refinement rounds instead of one (not part of the final recipe).",
+      "env": {"FAST_IO": "1"},
+      "overrides": [{"BIOHUB_MOTION_RELINK_FLOW_ITER": "2"}],
+      "submission": {"name": "flow-iter2", "ref": 56534425}
+    },
+    "flow-v1284": {
+      "extends": "x138flow",
+      "slug": "ctg-lane-r-flow-v1284",
+      "description": "+ public V1284 coordinate head, full mode (refined float coordinates through the whole pipeline).",
+      "env": {"FAST_IO": "1", "V1284": "1"},
+      "submission": {"name": "flow-v1284", "ref": 56564308}
+    },
+    "flow-ownhead": {
+      "extends": "flow-v1284",
+      "slug": "ctg-lane-r-flow-ownhead",
+      "description": "Our own coordinate head instead of the public one (best private family; not selected).",
+      "env": {"V1284_HEAD_DATASET": "impala9397/ctg-coordhead-own32-r4s0",
+              "V1284_HEAD_SHA256": "649645d68ea9bc5f9e85388a2ac7dbca94fb52232ef129d7208824a99b7e0dad"},
+      "submission": {"name": "flow-ownhead", "ref": 56592384}
+    },
+    "flow-v1284-headavg": {
+      "extends": "flow-v1284",
+      "slug": "ctg-lane-r-flow-v1284-headavg",
+      "description": "Displacement = mean of the public head and our own head (bounded displacements, µm).",
+      "env": {"V1284_HEAD2_DATASET": "impala9397/ctg-coordhead-own32-r4s0",
+              "V1284_HEAD2_SHA256": "649645d68ea9bc5f9e85388a2ac7dbca94fb52232ef129d7208824a99b7e0dad"},
+      "submission": {"name": "flow-v1284-headavg", "ref": 56622872}
+    },
+    "flow-v1284-pmax8": {
+      "extends": "flow-v1284",
+      "slug": "ctg-lane-r-flow-v1284-pmax8",
+      "description": "Safe-division parent-to-daughter gate 9 -> 8 µm.",
+      "overrides": [{"BIOHUB_SAFE_DIV_MAX_UM": "8.0"}],
+      "submission": {"name": "flow-v1284-pmax8", "ref": 56622718}
+    },
+    "final-headavg-pmax8": {
+      "extends": "flow-v1284-headavg",
+      "slug": "ctg-lane-r-headavg-pmax8",
+      "description": "Final selection #1: head average + safe-division gate 8 µm.",
+      "overrides": [{"BIOHUB_SAFE_DIV_MAX_UM": "8.0"}],
+      "submission": {"name": "headavg-pmax8", "ref": 56655723}
+    },
+    "final-headens5-pmax8": {
+      "extends": "flow-v1284",
+      "slug": "ctg-lane-r-headens5-pmax8",
+      "description": "Final selection #2: 0.5 x public head + 0.5 x mean of five own-head seeds, + 8 µm gate.",
+      "env": {"V1284_HEAD2_DATASET": "impala9397/ctg-coordhead-own32-seeds5",
+              "V1284_HEAD2_SHA256S": "649645d68ea9bc5f9e85388a2ac7dbca94fb52232ef129d7208824a99b7e0dad,de98f1fc6c5234d163a735f37d897a0994407ab2a9a9603160e825896f7cd8cb,8bc3e3dfcb2ef06837eb024688db3d7ddf56cc9594d2f5c915cd36404c786840,b1980ddf15c1b7a248a12e38b05fe609a46dd4e6fbf7682595154819e73a46f4,4056df8897b541a2079a1117fb7aac142e391c6cf6f885ededd2ad5f30eb33b8"},
+      "overrides": [{"BIOHUB_SAFE_DIV_MAX_UM": "8.0"}],
+      "submission": {"name": "headens5-pmax8", "ref": 56655856}
+    }
+  }
+}

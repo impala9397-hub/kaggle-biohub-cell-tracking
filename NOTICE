@@ -1,0 +1,84 @@
+kaggle-biohub-cell-tracking
+Copyright (c) 2026 Jongwon
+
+The code written for this repository is licensed under the MIT License (see LICENSE).
+This repository also contains material derived from the third-party sources below. Each license was read on the
+source page on 2026-10-03; the line shown on the page is quoted.
+
+-------------------------------------------------------------------------------------------------------------------
+1. Public Kaggle notebook "x138" by Anvith Pothula
+   https://www.kaggle.com/code/anvithpothula/biohub-0-953-lb-original
+   (slug biohub-x138 when we read it on 2026-09-22; now titled "Biohub 0.953 LB | ORIGINAL", version 1)
+   License shown on the page: "This Notebook has been released under the Apache 2.0 open source license."
+   SPDX: Apache-2.0. License text: https://www.apache.org/licenses/LICENSE-2.0
+
+   Used in:
+   - kaggle/x138_port_946.py: the flow-relink knob constants and the functions _gapfill_bump, load_low_detections,
+     build_low_detection_pool, readmit_discarded_detections, fill_gaps_from_low_detections and motion_relink_edges
+     (renamed _x138_flow_motion_relink_edges); the low-detection dump and ILP-timeout edits of the predict script.
+   - kaggle/v1284_946.py: X138_MODULE_SRC (x138's v1284_coordinate_refinement.py module, unchanged) and the four
+     predict-script edits that install it.
+   Changes we made: the code is embedded as patch text and gated by default-off knobs; one cost line adds our
+   learned-probability bonus inside the flow relink; our additions around it (statistics wrapper, head average,
+   head ensemble, count-neutral "late" mode, fast-relink switch) are our own code.
+
+2. Public Kaggle notebook "Biohub Cell Tracking: 0.946 LB" by Reyhan Ksatria (our base notebook)
+   https://www.kaggle.com/code/reyhanksatria/biohub-cell-tracking-0-946-lb
+   (now redirects to .../biohub-cell-tracking-0-947-lb, version 5; we used the version current on 2026-09-08)
+   License shown on the page: "This Notebook has been released under the Apache 2.0 open source license."
+   SPDX: Apache-2.0.
+   The notebook is NOT redistributed here; kaggle/fetch_base946.sh downloads it from Kaggle. Our patch modules
+   contain short excerpts of it (the anchor text each patch replaces) and modified versions of those excerpts.
+
+3. Public Kaggle notebook "Biohub Geometric Fusion" by Aman Atar
+   https://www.kaggle.com/code/amanatar/biohub-geometric-fusion
+   License shown on the page: "This Notebook has been released under the Apache 2.0 open source license."
+   Not used directly; it is the base of the x138 notebook, so some of the x138 code above may originate here.
+
+4. Organizer baseline: royerlab/kaggle-cell-tracking-competition
+   https://github.com/royerlab/kaggle-cell-tracking-competition (repository license: BSD-3-Clause)
+   Our patch modules contain short excerpts of its scripts/predict_unet_transformer.py (the text our runtime patches
+   replace) and modified versions of them. Our third detector was trained with its training script and recipe.
+   Its license notice:
+
+BSD 3-Clause License
+
+Copyright (c) 2026, Thibaut Goldsborough
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-------------------------------------------------------------------------------------------------------------------
+5. Model weights used by the kernels (attached as Kaggle datasets at run time; none are included here)
+   - pilkwang/biohub-tracking-support-pack-50ep-v1        license shown on the page: CC0: Public Domain
+   - pilkwang/biohub-deepcenter-unet3d-center-prior-v1    license shown on the page: CC0: Public Domain
+   - pilkwang/biohub-temporal-unet3d-seed314159-v1        license shown on the page: CC0: Public Domain
+   - anvithpothula/biohub-v1284-head-s075                 license shown on the page: CC0: Public Domain
+   - Our own weights, private Kaggle datasets trained on competition data and not redistributed:
+     impala9397/ctg-seedc4-snap (third detector), impala9397/ctg-coordhead-own32-r4s0 and
+     impala9397/ctg-coordhead-own32-seeds5 (coordinate heads).
+
+6. Competition data
+   Not included. The competition rules (section 2.4.b, Data Security) do not allow redistributing the competition data.

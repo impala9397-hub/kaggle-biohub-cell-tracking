@@ -1,0 +1,22 @@
+# Public base notebook (fetched with kaggle/fetch_base946.sh; not redistributed)
+kaggle/base946/
+# Organizer baseline checkout used by optional tests (ORGANIZER_REPO)
+third_party/
+# Build outputs and local data (never commit competition data, features or weights)
+/out/
+/data/
+/runs/
+*.npz
+*.pt
+*.pth
+*.zarr/
+*.geff/
+# Python / tooling
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+uv.lock.bak
+.DS_Store
+# PNG previews of the figures (SVG is the published format)
+docs/figures/*.png

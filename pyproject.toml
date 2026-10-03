@@ -1,0 +1,28 @@
+[project]
+name = "kaggle-biohub-cell-tracking"
+version = "1.0.0"
+description = "Our solution to the Kaggle competition 'Biohub - Cell Tracking During Development' (private LB 0.92649)"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+]
+
+[dependency-groups]
+# CPU tests. Synthetic tests need only this group; builder tests also need the public base notebook
+# (kaggle/fetch_base946.sh) and skip without it.
+test = ["pytest>=8"]
+# Optional: tests that exercise the coordinate head (torch), the ground-truth reader (zarr) and the
+# organizer CSV reader (polars). Without them those tests skip.
+full = ["torch>=2.2", "zarr>=3", "polars>=1.0"]
+# Figures in docs/figures.
+figures = ["matplotlib>=3.8"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-rs"

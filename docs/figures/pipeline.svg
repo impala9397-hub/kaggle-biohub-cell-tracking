@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="794" viewBox="0 0 960 794" role="img" aria-label="Pipeline of the final submission: detect, refine centres, link, repair">
+<rect width="960" height="794" fill="#fcfcfb"/>
+<rect x="20" y="20" width="14" height="14" rx="3" fill="#a8a7a1"/>
+<text x="42" y="32" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13" font-weight="normal" fill="#52514e" text-anchor="start">public notebook lineage</text>
+<rect x="237" y="20" width="14" height="14" rx="3" fill="#2a78d6"/>
+<text x="259" y="32" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13" font-weight="normal" fill="#52514e" text-anchor="start">our addition</text>
+<rect x="377" y="20" width="14" height="14" rx="3" fill="#eb6834"/>
+<text x="399" y="32" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13" font-weight="normal" fill="#52514e" text-anchor="start">ported from the public x138 notebook (Apache-2.0)</text>
+<rect x="20" y="60" width="920" height="76" rx="10" fill="#f4f3ef" stroke="#d6d5cf" stroke-width="1"/>
+<text x="38" y="89" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="15" font-weight="bold" fill="#0b0b0b" text-anchor="start">Input</text>
+<rect x="210" y="77" width="6" height="17" rx="2" fill="#a8a7a1"/>
+<text x="226" y="90" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">3D + time light-sheet video of one zebrafish embryo, nuclei labelled</text>
+<rect x="210" y="104" width="6" height="17" rx="2" fill="#a8a7a1"/>
+<text x="226" y="117" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">100 frames × 64 × 256 × 256 voxels (1.625 × 0.406 × 0.406 µm)</text>
+<rect x="20" y="166" width="920" height="103" rx="10" fill="#f4f3ef" stroke="#d6d5cf" stroke-width="1"/>
+<text x="38" y="195" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="15" font-weight="bold" fill="#0b0b0b" text-anchor="start">1  Detect</text>
+<text x="38" y="214" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="12.5" font-weight="normal" fill="#52514e" text-anchor="start">nuclei per frame</text>
+<rect x="210" y="183" width="6" height="17" rx="2" fill="#a8a7a1"/>
+<text x="226" y="196" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">Primary + secondary TemporalUNet3D detectors (public weights), 8-view TTA</text>
+<rect x="210" y="210" width="6" height="17" rx="2" fill="#2a78d6"/>
+<text x="226" y="223" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">Third detector: our own model (organizer recipe, epoch 100), blend weight 0.20</text>
+<rect x="210" y="237" width="6" height="17" rx="2" fill="#a8a7a1"/>
+<text x="226" y="250" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">Peak picking on the blended logit map gives the candidate nuclei</text>
+<rect x="20" y="299" width="920" height="76" rx="10" fill="#f4f3ef" stroke="#d6d5cf" stroke-width="1"/>
+<text x="38" y="328" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="15" font-weight="bold" fill="#0b0b0b" text-anchor="start">2  Refine</text>
+<text x="38" y="347" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="12.5" font-weight="normal" fill="#52514e" text-anchor="start">centres</text>
+<rect x="210" y="316" width="6" height="17" rx="2" fill="#eb6834"/>
+<text x="226" y="329" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">V1284 head: UNet features at each detection → MLP → shift of at most 2 µm</text>
+<rect x="210" y="343" width="6" height="17" rx="2" fill="#2a78d6"/>
+<text x="226" y="356" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">Our own head (159 training videos, 104k pairs), averaged with the public head</text>
+<rect x="20" y="405" width="920" height="76" rx="10" fill="#f4f3ef" stroke="#d6d5cf" stroke-width="1"/>
+<text x="38" y="434" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="15" font-weight="bold" fill="#0b0b0b" text-anchor="start">3  Link</text>
+<text x="38" y="453" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="12.5" font-weight="normal" fill="#52514e" text-anchor="start">frame to frame</text>
+<rect x="210" y="422" width="6" height="17" rx="2" fill="#a8a7a1"/>
+<text x="226" y="435" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">Node-transformer edge probabilities with bidirectional fusion</text>
+<rect x="210" y="449" width="6" height="17" rx="2" fill="#a8a7a1"/>
+<text x="226" y="462" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">Integer linear program (tracksdata) selects nodes and edges</text>
+<rect x="20" y="511" width="920" height="184" rx="10" fill="#f4f3ef" stroke="#d6d5cf" stroke-width="1"/>
+<text x="38" y="540" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="15" font-weight="bold" fill="#0b0b0b" text-anchor="start">4  Repair</text>
+<text x="38" y="559" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="12.5" font-weight="normal" fill="#52514e" text-anchor="start">the graph</text>
+<rect x="210" y="528" width="6" height="17" rx="2" fill="#eb6834"/>
+<text x="226" y="541" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">Motion relink on a local flow field (median displacement of nearby cells)</text>
+<rect x="210" y="555" width="6" height="17" rx="2" fill="#2a78d6"/>
+<text x="226" y="568" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">Learned-probability bonus on every relink candidate</text>
+<rect x="210" y="582" width="6" height="17" rx="2" fill="#a8a7a1"/>
+<text x="226" y="595" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">Gap closing with a DeepCenter veto</text>
+<rect x="210" y="609" width="6" height="17" rx="2" fill="#2a78d6"/>
+<text x="226" y="622" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">Division repair gated by image evidence z(dip) + z(sym) − z(div)</text>
+<rect x="210" y="636" width="6" height="17" rx="2" fill="#2a78d6"/>
+<text x="226" y="649" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">Parent-to-daughter distance gate 9 → 8 µm</text>
+<rect x="210" y="663" width="6" height="17" rx="2" fill="#a8a7a1"/>
+<text x="226" y="676" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">Short-track filter and line-fit smoothing</text>
+<rect x="20" y="725" width="920" height="49" rx="10" fill="#f4f3ef" stroke="#d6d5cf" stroke-width="1"/>
+<text x="38" y="754" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="15" font-weight="bold" fill="#0b0b0b" text-anchor="start">Output</text>
+<rect x="210" y="742" width="6" height="17" rx="2" fill="#a8a7a1"/>
+<text x="226" y="755" font-family="Helvetica, Arial, 'DejaVu Sans', sans-serif" font-size="13.5" font-weight="normal" fill="#0b0b0b" text-anchor="start">submission.csv: nodes (t, z, y, x in integer voxels) and edges</text>
+<line x1="78" y1="140" x2="78" y2="155" stroke="#52514e" stroke-width="1.6"/>
+<path d="M 73 154 L 83 154 L 78 162 Z" fill="#52514e"/>
+<line x1="78" y1="273" x2="78" y2="288" stroke="#52514e" stroke-width="1.6"/>
+<path d="M 73 287 L 83 287 L 78 295 Z" fill="#52514e"/>
+<line x1="78" y1="379" x2="78" y2="394" stroke="#52514e" stroke-width="1.6"/>
+<path d="M 73 393 L 83 393 L 78 401 Z" fill="#52514e"/>
+<line x1="78" y1="485" x2="78" y2="500" stroke="#52514e" stroke-width="1.6"/>
+<path d="M 73 499 L 83 499 L 78 507 Z" fill="#52514e"/>
+<line x1="78" y1="699" x2="78" y2="714" stroke="#52514e" stroke-width="1.6"/>
+<path d="M 73 713 L 83 713 L 78 721 Z" fill="#52514e"/>
+</svg>

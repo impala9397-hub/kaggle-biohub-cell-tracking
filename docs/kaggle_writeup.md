@@ -1,7 +1,6 @@
-<!-- DRAFT of our Kaggle solution write-up. Not posted. Before posting:
-     1. make the GitHub repository public (it is private today);
-     2. upload the figures as PNG (`uv run --no-sync python scripts/make_figures.py --png`; export pipeline.svg too)
-        and replace the relative image paths. -->
+<!-- DRAFT of our Kaggle solution write-up. Not posted. Before posting, upload the figures as PNG
+     (`uv run --no-sync python scripts/make_figures.py --png`; export pipeline.svg too) and replace the relative
+     image paths. The GitHub repository has been public since 2026-10-03. -->
 
 # 130th Place (Silver): One-Change Patches on a Public Notebook
 
@@ -152,11 +151,11 @@ reading. Both times the holdout pointed the same way as the private leaderboard.
 
 ## 7. Code
 
-**Code:** https://github.com/impala9397-hub/kaggle-biohub-cell-tracking (to be made public when this write-up is
-posted). It holds the builder, patch modules and milestone recipes, the coordinate-head training script, CPU tests,
-figure scripts and all 158 of our submissions with public and private scores.
+**Code:** https://github.com/impala9397-hub/kaggle-biohub-cell-tracking. It holds the builder, patch modules and
+milestone recipes, the coordinate-head training script, CPU tests, figure scripts and all 158 of our submissions with
+public and private scores.
 `kaggle/fetch_base946.sh` downloads the base notebook and checks its hash, and
-`python kaggle/build_recipe.py final-headavg-pmax8 out/` rebuilds the final kernel; we checked that the rebuild
+`python kaggle/build_recipe.py final-headavg-pmax8 out/final` rebuilds the final kernel; we checked that the rebuild
 matches the submitted kernel except for comments, docstrings, file paths and ids. Our own weights were trained on
 competition data and are not redistributed.
 

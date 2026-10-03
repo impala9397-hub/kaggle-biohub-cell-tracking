@@ -2,7 +2,7 @@
      (`uv run --no-sync python scripts/make_figures.py --png`; export pipeline.svg too) and replace the relative
      image paths. The GitHub repository has been public since 2026-10-03. -->
 
-# 130th Place (Silver): One-Change Patches on a Public Notebook
+# One-Change Patches on a Public Notebook
 
 *Subtitle: what held up on the private leaderboard, and what the public one missed about our own head*
 

@@ -98,4 +98,4 @@ tests/                 CPU tests; synthetic ones always run, builder tests skip 
 - [x] T6 docs: method, results, lessons
 - [x] T7 README
 - [x] T8 LICENSE and NOTICE (license lines checked on the source pages)
-- [ ] T9 secret and PII scan, private GitHub repository, push
+- [x] T9 secret and PII scan, private GitHub repository, push
